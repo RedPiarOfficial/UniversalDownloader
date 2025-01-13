@@ -5,6 +5,8 @@ UniversalDownloader is a versatile tool for downloading videos from various plat
 
 **Supported Languages**: ru
 
+## BetaTest Goal
+Collect feedback from users, identify bugs, and improve the product before the final release.
 ## Key Features
 - Support for downloading videos, playlists, and channels from YouTube.
 - Download anime (episodes, seasons, all seasons).
