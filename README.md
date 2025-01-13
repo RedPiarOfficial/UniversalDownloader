@@ -80,8 +80,8 @@ pip install -r requirements.txt
 python client.py
 ```
 
-Так же вы можете скачать архив репозитория:
-
+Либо же вы можете скачать архив репозитория:
+https://github.com/RedPiarOfficial/UniversalDownloader/archive/refs/heads/main.zip
 
 ## Технические требования
 - Python 3.12+
