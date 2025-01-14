@@ -72,15 +72,9 @@ Testing was conducted with an internet speed of 180 Mbps. Results:
    - Interface translation to other languages.
 
 ## Installation and Launch
-1. Clone the repository:
-```bash
-git clone https://github.com/RedPiarOfficial/UniversalDownloader.git
-```
-2. Navigate to the project directory:
-```bash
-cd UniversalDownloader
-```
-3. Install dependencies:
+you can download the repository archive: [UniversalDownloader.zip](https://github.com/RedPiarOfficial/UniversalDownloader/archive/refs/heads/main.zip)
+
+Install dependencies:
 ```bash
 pip install -r requirements.txt
 ```
@@ -88,7 +82,7 @@ Run the script:
 ```bash
 python client.py
 ```
-Alternatively, you can download the repository archive: [UniversalDownloader.zip](https://github.com/RedPiarOfficial/UniversalDownloader/archive/refs/heads/main.zip)
+
 
 ## Technical Requirements
 - Python 3.12+
