@@ -1,0 +1,8 @@
+tqdm
+rich
+yt_dlp
+httpx
+httpx[http2]
+requests
+phub
+bs4
