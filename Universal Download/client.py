@@ -82,9 +82,10 @@ class JutSu:
 		return None
 
 	def download_chunk(self, url, chunk_size, start_byte, end_byte, filename, progress):
+		current_headers = headers.copy()
 		with httpx.Client(http2=True) as client:
-			headers['Range'] = f"bytes={start_byte}-{end_byte}"
-			with client.stream("GET", url, headers=headers) as resp:
+			current_headers['Range'] = f"bytes={start_byte}-{end_byte}"
+			with client.stream("GET", url, headers=current_headers) as resp:
 				resp.raise_for_status()
 				# Вызов метода read() для получения данных из потока
 				chunk_data = resp.read()
@@ -97,10 +98,10 @@ class JutSu:
 	def download_anime_episode(self, DownloadLink, DownloadID=None, link=None):
 		if link:
 			season = re.search(r'/season-(\d+)', link)
-			episode = re.search(r'/episode-(\d+)\.html', link)
+			episode = re.search(r'/(episode|film)-\d+\.html', link)
 		else:
 			season = re.search(r'/season-(\d+)', self.DownloadIDsList[DownloadID])
-			episode = re.search(r'/episode-(\d+)\.html', self.DownloadIDsList[DownloadID])
+			episode = re.search(r'/(episode|film)-\d+\.html', self.DownloadIDsList[DownloadID])
 
 		season = season.group(1) if season else 'season-1'
 
@@ -117,14 +118,13 @@ class JutSu:
 			total_size = int(resp.headers.get('content-length', 0))
 
 		# Файл для сохранения
-		filename = f'{base_path}/{season}/episode-{episode.group(1)}.mp4' if season else f'{base_path}/episode-{episode.group(1)}.mp4'
+		filename = f'{base_path}/{season}/{episode.group(0)[1:-5]}.mp4' if season else f'{base_path}/{episode.group(0)[1:-5]}.mp4'
 		
-		# Создаем пустой файл
 		with open(filename, "wb") as f:
 			f.truncate(total_size)
 
 		# Инициализируем прогресс бар
-		with tqdm(total=total_size, unit='B', unit_scale=True, unit_divisor=1024, desc=f"Сезон {season}, Эпизод {episode.group(1)}") as progress:
+		with tqdm(total=total_size, unit='B', unit_scale=True, unit_divisor=1024, desc=f"Сезон {season}, Эпизод {episode.group(0)[1:-5]}") as progress:
 			
 			# Разделяем файл на чанки
 			chunk_size = 1024 * 1024 * 10  # 10 MB
