@@ -1,7 +1,7 @@
 # UniversalDownloader
 UniversalDownloader is a versatile tool for downloading videos from various platforms, including YouTube, TikTok, AnimeJutSuSite, and PornHub.
 
-**Version**: Beta0.1.0
+**Version**: Beta0.1.1
 
 **Supported Languages**: ru
 
